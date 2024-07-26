@@ -22,15 +22,12 @@ public class OpCodeMap {
         OPCODES.put("lui", "001111");
         OPCODES.put("bltz", "000001");
         OPCODES.put("bgez", "000001");
-
         OPCODES.put("beq", "000100");
         OPCODES.put("bne", "000101");
         OPCODES.put("blez", "000110");
         OPCODES.put("bgtz", "000111");
-
         OPCODES.put("bltzal", "1");
         OPCODES.put("bgezal", "1");
-
         OPCODES.put("subu", "100011");
         OPCODES.put("and", "100100");
         OPCODES.put("or", "100101");
@@ -38,11 +35,12 @@ public class OpCodeMap {
         OPCODES.put("nor", "100111");
         OPCODES.put("slt", "101010");
         OPCODES.put("sltu", "101011");
-
         OPCODES.put("sllv", "000110");
+        OPCODES.put("mult", "000000");
+        
     }
-
     public static String getOpcode(String instruction) {
+        // Retorna o opcode Requerido
         return OPCODES.get(instruction);
     }
 }
