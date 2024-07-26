@@ -1,14 +1,28 @@
-import java.util.Scanner;
+
+import java.io.*;
 
 public class MIPSConverter {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Digite uma instrução MIPS:"); // Entrada da instrução
-        String instrucao = sc.nextLine();
-        sc.close();
+        String inputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa.txt";
+        String outputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/output.txt";
 
-        String instrucaoBinario = convertToBinary(instrucao);
-        System.out.println("Instrução em binário: " + instrucaoBinario);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(inputFileName));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String binaryInstruction = convertToBinary(line);
+                writer.write(binaryInstruction);
+                writer.newLine();
+            }
+
+            reader.close();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static String convertToBinary(String instrucao) {
@@ -75,7 +89,7 @@ public class MIPSConverter {
         String rt = RegistradorMap.getRegistrador(parts[3]);
         String rd = RegistradorMap.getRegistrador(parts[1]);
         String shamt = "00000"; // Valor padrão para R-Type
-        String funct = parts[0].equals("add") ? "100000" : "100010"; 
+        String funct = parts[0].equals("add") ? "100000" : "100010";
 
         return opcodeBinary + rs + rt + rd + shamt + funct;
     }

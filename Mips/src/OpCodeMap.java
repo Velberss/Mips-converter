@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-
 public class OpCodeMap {
     private static final Map<String, String> OPCODES = new HashMap<>();
     //Todos os Opcodes
@@ -11,7 +10,7 @@ public class OpCodeMap {
         OPCODES.put("sw", "101011");
         OPCODES.put("sh", "101001");
         OPCODES.put("swl", "101010");
-        OPCODES.put("swr", "101110");
+        OPCODES.put("srl", "000000");
         OPCODES.put("lbu", "100100");
         OPCODES.put("lwr", "100110");
         OPCODES.put("addi", "001000");
