@@ -3,16 +3,16 @@ import java.io.*;
 
 public class MIPSConverter {
     public static void main(String[] args) {
-        String inputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa2.txt";
-        String outputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/output.txt";
+        String entradaArq = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa.txt";
+        String saidaArq = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/output.txt";
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(inputFileName));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            BufferedReader reader = new BufferedReader(new FileReader(entradaArq));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(saidaArq));
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String binaryInstruction = convertToBinary(line);
+                String binaryInstruction = converterToBinary(line);
                 writer.write(binaryInstruction);
                 writer.newLine();
             }
@@ -25,7 +25,7 @@ public class MIPSConverter {
 
     }
 
-    private static String convertToBinary(String instrucao) {
+    private static String converterToBinary(String instrucao) {
         String[] parts = instrucao.split("\\s+|,\\s*|\\(|\\)"); // o split separa a string e reparte cada informação
         String opcode = parts[0];
         String opcodeBinario = OpCodeMap.getOpcode(opcode);

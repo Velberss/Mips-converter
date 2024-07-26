@@ -4,6 +4,7 @@ public class OpCodeMap {
     private static final Map<String, String> OPCODES = new HashMap<>();
     //Todos os Opcodes
     static {
+        OPCODES.put("$zero", "000000");
         OPCODES.put("add", "000000");
         OPCODES.put("sub", "000000");
         OPCODES.put("lw", "100011");
