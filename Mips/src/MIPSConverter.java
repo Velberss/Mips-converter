@@ -3,7 +3,7 @@ import java.io.*;
 
 public class MIPSConverter {
     public static void main(String[] args) {
-        String inputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa.txt";
+        String inputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa2.txt";
         String outputFileName = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/output.txt";
 
         try {
