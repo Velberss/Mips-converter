@@ -3,7 +3,7 @@ import java.io.*;
 
 public class MIPSConverter {
     public static void main(String[] args) {
-        String entradaArq = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa3.txt";
+        String entradaArq = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/programa.txt";
         String saidaArq = "C:/Users/gonca/OneDrive/Área de Trabalho/🤓/Arqui/Mips/src/output.txt";
 
         try {
@@ -81,6 +81,9 @@ public class MIPSConverter {
             case "bltz":
             case "bgez":
                 return convertEspeciaisITipo(parts, opcodeBinario);
+            case "j":
+            case "jal":
+                return convertJTipo(parts, opcodeBinario);
             default:
                 throw new IllegalArgumentException("Tipo de instrução não suportado: " + opcode);
         }
@@ -113,7 +116,11 @@ public class MIPSConverter {
         String rt = RegistradorMap.getRegistrador(parts[2]);
         String rs = RegistradorMap.getRegistrador(parts[1]);
         int imediato = Integer.parseInt(parts[3]);
-        String imediatoBinario = String.format("%16s", Integer.toBinaryString(imediato)).replace(' ', '0');
+        String imediatoBinario = String.format("%16s", Integer.toBinaryString(imediato)).replace(' ', '0'); // Formata a
+                                                                                                            // variavel
+                                                                                                            // de string
+                                                                                                            // para
+                                                                                                            // binario
 
         if (rs == null || rt == null) {
             throw new IllegalArgumentException("Registrador desconhecido");
@@ -133,5 +140,11 @@ public class MIPSConverter {
         }
 
         return opcodeBinary + rs + rt + imediatoBinario;
+    }
+
+    private static String convertJTipo(String[] parts, String opcodeBinary) {
+        int end = Integer.parseInt(parts[1], 16) / 4;
+        String endBinario = String.format("%26s", Integer.toBinaryString(end)).replace(' ', '0');
+        return opcodeBinary + endBinario;
     }
 }

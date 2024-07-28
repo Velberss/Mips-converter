@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class RegistradorMap {
     private static final Map<String, String> REGISTRADORES = new HashMap<>();
-    //Todos os Registradores necessarios
+    // Todos os Registradores necessarios
     static {
         REGISTRADORES.put("$zero", "00000");
         REGISTRADORES.put("$t0", "01000");
@@ -22,8 +22,9 @@ public class RegistradorMap {
         REGISTRADORES.put("$s5", "10101");
         REGISTRADORES.put("$s6", "10110");
         REGISTRADORES.put("$s7", "10111");
-        
+
     }
+
     public static String getRegistrador(String register) {
         // Return o registrador requerido
         return REGISTRADORES.get(register);

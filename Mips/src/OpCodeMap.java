@@ -1,8 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
+
 public class OpCodeMap {
     private static final Map<String, String> OPCODES = new HashMap<>();
-    //Todos os Opcodes
+    // Todos os Opcodes
     static {
         OPCODES.put("$zero", "000000");
         OPCODES.put("add", "000000");
@@ -38,8 +39,9 @@ public class OpCodeMap {
         OPCODES.put("sllv", "000110");
         OPCODES.put("mult", "000000");
         OPCODES.put("sll", "000000");
-        
+
     }
+
     public static String getOpcode(String instruction) {
         // Retorna o opcode Requerido
         return OPCODES.get(instruction);
