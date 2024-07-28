@@ -22,7 +22,7 @@ public class RegistradorMap {
         REGISTRADORES.put("$s5", "10101");
         REGISTRADORES.put("$s6", "10110");
         REGISTRADORES.put("$s7", "10111");
-
+        
     }
     public static String getRegistrador(String register) {
         // Return o registrador requerido

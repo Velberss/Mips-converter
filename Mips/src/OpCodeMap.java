@@ -37,6 +37,7 @@ public class OpCodeMap {
         OPCODES.put("sltu", "101011");
         OPCODES.put("sllv", "000110");
         OPCODES.put("mult", "000000");
+        OPCODES.put("sll", "000000");
         
     }
     public static String getOpcode(String instruction) {
