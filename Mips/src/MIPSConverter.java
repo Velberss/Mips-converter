@@ -19,7 +19,6 @@ public class MIPSConverter {
             e.printStackTrace();
         }
     }
-
     private static String converterToBinary(String instrucao) {
         String[] parts = instrucao.split("\\s+|,\\s*|\\(|\\)"); // o split separa a string e reparte cada informação
         String opcode = parts[0];
@@ -28,7 +27,6 @@ public class MIPSConverter {
             throw new IllegalArgumentException("Opcode desconhecido!!");
         }
         switch (opcode) {
-
             case "add":
             case "sub":
             case "addu":
@@ -97,20 +95,12 @@ public class MIPSConverter {
 
     private static String convertRTipo(String[] parts, String opcodeBinary) {
         {
-            String rs = "00000";
-            String rt = "00000";
-            String rd = "00000";
-            String shamt = "00000";
-            String funct = OpCodeMap.getOpcode(parts[0]);
-            if (parts.length >= 2) {
-                rs = RegistradorMap.getRegistrador(parts[1]);
-            }
-            if (parts.length >= 3) {
-                rt = RegistradorMap.getRegistrador(parts[2]);
-            }
-            if (parts.length >= 4) {
-                rd = RegistradorMap.getRegistrador(parts[3]);
-            }
+            String rs = RegistradorMap.getRegistrador(parts[2]);
+            String rt = RegistradorMap.getRegistrador(parts[3]);
+            String rd = RegistradorMap.getRegistrador(parts[1]);
+            String shamt = "00000"; // Valor padrão para R-Type
+            String funct = parts[0].equals("add") ? "100000" : "100010";
+
             if (parts[0].equals("sll") || parts[0].equals("srl")) {
                 rd = RegistradorMap.getRegistrador(parts[1]);
                 rt = RegistradorMap.getRegistrador(parts[2]);
@@ -147,7 +137,7 @@ public class MIPSConverter {
         if (rs == null || rt == null) {
             throw new IllegalArgumentException("Registrador desconhecido");
         }
-
+    
         return opcodeBinary + rs + rt + imediatoBinario;
     }
 
